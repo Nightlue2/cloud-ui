@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <router-view class="all"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import './index.scss'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  
 }
 </script>
+<style lang="scss">
+#app{
+  width:100%;
+  height:100vh;
+}
+</style>

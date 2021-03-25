@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    border-bottom: 1px solid;
+  }
+}
+.icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
