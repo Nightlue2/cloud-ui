@@ -11,9 +11,7 @@
         </svg>
       </div>
       
-      <ul class="menu">
-          <li><router-link to="/doc">文档</router-link></li>
-      </ul>
+      <router-link to="/doc" class="toDoc">文档</router-link>
     </div>
 </template>
 
@@ -35,7 +33,7 @@ export default {
   @media(min-width:800px){
 
   }
-  @media(max-width:800px){
+  @media(max-width:770px){
 
   }
   background: pink;
@@ -47,22 +45,10 @@ export default {
     max-width: 6em;
     margin-right: auto;
   }
-  > .menu {
-    display: flex;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-    > li {
-      margin: 0 1em;
-      > a{
-        font-size: 16px;
-        display:block;
-        line-height:32px;
-        &:hover{
-          text-decoration: none;
-          border:none;
-        }
-      }
-    }
+  > .toDoc{
+    font-size: 20px;
+    display:block;
+    line-height:32px;
   }
 }
 </style>
