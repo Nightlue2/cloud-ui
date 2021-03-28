@@ -2,7 +2,7 @@
     <div class="page">
         <TopNav :jumpOrNot="true" class="docNav" v-model="toggleAside"/>
         <div class="rest">
-            <aside v-if="toggleAside">
+            <aside v-if="isMobile || toggleAside">
                 <h2>文档</h2>
                 <ol>
                     <li>
@@ -39,13 +39,29 @@
 </template>
 <script lang="ts">
 import TopNav from '../components/TopNav.vue';
-import {ref} from 'vue';
+import {computed, onMounted, reactive, ref,toRef} from 'vue';
 export default {
     components:{TopNav},
     setup(){
+        let timerId;
+        let isMobile = ref(document.documentElement.clientWidth<=770?false:true);
         let toggleAside = ref<Boolean>(false)
-        return {toggleAside}
-    }
+        onMounted(()=>{
+            window.addEventListener('resize',()=>{
+                timerId && window.clearTimeout(timerId);
+                timerId = setTimeout(()=>{
+                    if(document.documentElement.clientWidth<=770){
+                        isMobile.value = false;
+                    }else{
+                        isMobile.value = true;
+                    }
+                    timerId = null;
+                },400)
+            });
+        })
+        return {toggleAside,isMobile}
+    },
+    
 }
 </script>
 <style lang="scss">
