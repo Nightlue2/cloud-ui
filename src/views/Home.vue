@@ -63,6 +63,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '../style.scss';
 @media (min-width:1200px){
   .navAndBanner, section{
     a:hover{
@@ -76,7 +77,7 @@ export default {
     clip-path:ellipse(80% 60% at 50% 40%);
   }
   .banner {
-    color:#083c4c;
+    color:$font-color;
     padding-top:80px;
     padding-bottom: 100px;
     display: flex;

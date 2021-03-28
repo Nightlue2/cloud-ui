@@ -1,3 +1,0 @@
-<template>
-    GetStarted
-</template>
