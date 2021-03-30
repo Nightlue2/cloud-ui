@@ -39,7 +39,7 @@
 </template>
 <script lang="ts">
 import TopNav from '../components/TopNav.vue';
-import {computed, onMounted, reactive, ref,toRef} from 'vue';
+import { onMounted, ref} from 'vue';
 export default {
     components:{TopNav},
     setup(){
@@ -141,13 +141,14 @@ export default {
                     height: auto;
                     padding-left:50px;
                     line-height: 1.7em;
+                    
                 }
             }
             
         }
     }
 }
-@media (min-width:770px){
+@media (min-width:770px) and (max-width:1200px) {
     .page{
         position: relative;
         display:flex;
@@ -159,7 +160,7 @@ export default {
             > aside{
                 width:200px;
                 height:$doc-main-height;
-                position: absolute;
+                position: fixed;
                 top:$doc-top-margin;
                 padding-top:30px;
                 color:rgb(0,0,0,0.65);

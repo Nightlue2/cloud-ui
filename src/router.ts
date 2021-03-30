@@ -4,10 +4,10 @@ import Doc from './views/Doc.vue'
 import NotFound from "./views/NotFound.vue";
 import { h } from 'vue';
 import Markdown from './components/Markdown.vue';
-import Button from './views/ButtonExample.vue';
-import Dialog from './views/DialogExample.vue';
-import Switch from './views/SwitchExample.vue';
-import Tabs from './views/TabsExample.vue';
+import Button from './views/Button.vue';
+import Dialog from './views/Dialog.vue';
+import Switch from './views/Switch.vue';
+import Tabs from './views/Tabs.vue';
 const md = filename => h(Markdown, { path: `../markdown/${filename}.md`, key: filename })
 export const router = createRouter({
     history:createWebHashHistory(),
