@@ -18,16 +18,28 @@
                 <h2>组件列表</h2>
                 <ol>
                     <li>
-                    <router-link to="/doc/button">Button<span>按钮</span></router-link>
+                        <router-link to="/doc/button">
+                            <span>Button</span>
+                            <span class="chinese" >按钮</span>
+                        </router-link>
                     </li>
                     <li>
-                    <router-link to="/doc/switch">Switch<span>开关</span></router-link>
+                        <router-link to="/doc/switch">
+                        <span>Switch</span>
+                        <span class="chinese">开关</span>
+                        </router-link>
                     </li>
                     <li>
-                    <router-link to="/doc/dialog">Dialog<span>对话框</span></router-link>
+                        <router-link to="/doc/dialog">
+                        <span>Dialog</span>
+                        <span class="chinese">对话框</span>
+                        </router-link>
                     </li>
                     <li>
-                    <router-link to="/doc/tabs">Tabs<span>标签页</span></router-link>
+                        <router-link to="/doc/tabs">
+                        <span>Tabs</span>
+                        <span class="chinese">标签页</span>
+                        </router-link>
                     </li>
                 </ol>
             </aside>
@@ -82,7 +94,7 @@ export default {
                 top:$doc-top-margin;
                 padding-top:30px;
                 color:rgb(0,0,0,0.65);
-                font-family: -apple-system,"Noto Sans","Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,"Liberation Sans","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Source Han Sans SC","Source Han Sans CN","Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Zen Hei","ST Heiti",SimHei,"WenQuanYi Zen Hei Sharp",sans-serif;
+                font-family: Avenir,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
                 &::after{
                     position: absolute;
                     content:'';
@@ -115,8 +127,14 @@ export default {
                         }
                         span{
                             color:inherit;
+                            font-size:16px;
+                            font-weight: 480;
+                        }
+                        span.chinese{
+                            font-size: 14px;
                             margin-left:10px;
-                            font-size: 13px;
+                            opacity: .67;
+                            font-weight: 400;
                         }
                         .router-link-active {
                             background: #d8f1f6;
@@ -139,7 +157,7 @@ export default {
                 padding-right:10.42vw;
                 > .doc-content{
                     height: auto;
-                    padding-left:50px;
+                    padding-left:4.95vw;
                     line-height: 1.7em;
                     
                 }
@@ -197,8 +215,13 @@ export default {
                         }
                         span{
                             color:inherit;
+                            font-size: 16px;
+                        }
+                        span.chinese{
+                            font-size: 14px;
                             margin-left:10px;
-                            font-size: 13px;
+                            opacity: .67;
+                            font-weight: 400;
                         }
                         .router-link-active {
                             background: #d8f1f6;
@@ -262,7 +285,7 @@ export default {
                 h2{
                     font-weight: 400;
                     font-size:1em;
-                    padding-left:40px;
+                    padding-left:18px;
                     padding-top:20px;
                 }
 
@@ -274,13 +297,18 @@ export default {
                         a{
                             display: block;
                             padding:10px 0;
-                            padding-left:50px;
+                            padding-left:20px;
                             font-size: inherit;
                         }
                         span{
                             color:inherit;
+                            font-size: 16px;
+                        }
+                        span.chinese{
+                            font-size: 14px;
                             margin-left:10px;
-                            font-size: 13px;
+                            opacity: .67;
+                            font-weight: 400;
                         }
                         .router-link-active {
                             background: #d8f1f6;

@@ -1,17 +1,17 @@
 <template>
 <div>
+  
+    <Button v-for="(item,name) in buttonList" :key="item" :size="btnsize" @click="changeSize(name)" >{{item}}</Button>
+  
   <div>
-    <Button v-for="(item,name) in buttonList" :key="item" :size="btnSize" @click="changeSize(name)" >{{item}}+{{btnSize}}</Button>
+    <Button :size="btnsize" theme="link"  @click="changeSize('big')">Big</Button>
+    <Button :size="btnsize" theme="link" @click="changeSize('default')">Default</Button>
+    <Button :size="btnsize" theme="link" @click="changeSize('small')">Small</Button>
   </div>
   <div>
-    <Button :size="btnSize" theme="link"  @click="changeSize('big')">Big</Button>
-    <Button :size="btnSize" theme="link" @click="changeSize('default')">Default</Button>
-    <Button :size="btnSize" theme="link" @click="changeSize('small')">Small</Button>
-  </div>
-  <div>
-    <Button :size="btnSize" theme="text" @click="changeSize('big')">Big</Button>
-    <Button :size="btnSize" theme="text" @click="changeSize('default')">Default</Button>
-    <Button :size="btnSize" theme="text" @click="changeSize('small')">Small</Button>
+    <Button :size="btnsize" theme="text" @click="changeSize('big')">Big</Button>
+    <Button :size="btnsize" theme="text" @click="changeSize('default')">Default</Button>
+    <Button :size="btnsize" theme="text" @click="changeSize('small')">Small</Button>
   </div>
 </div>
 </template>
@@ -24,15 +24,12 @@ export default {
     Button
   },
   setup(){
-    let btnSize = ref('default');
+    let btnsize = ref('big');
     let buttonList = {'big':'Big','default':'Default','small':'Small'}
-    let x = ref(true)
-    function changeSize(newsize){
-      btnSize.value = newsize;
-      x.value = !x.value;
+    function changeSize(newsize:string){
+      btnsize.value = newsize;
     }
-    
-    return {btnSize,changeSize,buttonList,x}
+    return {btnsize,changeSize,buttonList}
   }
 }
 </script>

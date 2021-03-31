@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts">
-import {ref,provide} from 'vue';
 import Demo from "../components/Demo.vue";
 import BtnDemo1 from "../components/Btn.demo1.vue";
 import BtnDemo2 from "../components/Btn.demo2.vue";
@@ -22,8 +21,6 @@ export default {
     Demo
   },
   setup() {
-    let size = ref('default');
-    provide('btnSize',size);
     return {
       BtnDemo1,
       BtnDemo2,

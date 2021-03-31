@@ -1,12 +1,11 @@
 <template>
   <button class="cloud-button" :class="classes" :disabled="disabled">
-    {{x}}
     <span v-if="loading" class="cloud-loadingIndicator"></span>
     <slot />
   </button>
 </template>
 <script lang="ts">
-import { computed } from "vue";
+import { computed,toRefs} from "vue";
 export default {
   props: {
     theme: {
@@ -29,18 +28,15 @@ export default {
       type: Boolean,
       default: false
     },
-    x:{
-      type:Boolean,
-    }
+    
   },
   setup(props) {
-    const { theme, size, level } = props;
+    const { theme, size, level } = toRefs(props);
     const classes = computed(function(){
-      console.log('size:'+size);
       return {
-        [`cloud-theme-${theme}`]: theme,
-        [`cloud-size-${size}`]: size,
-        [`cloud-level-${level}`]: level,
+        [`cloud-theme-${theme.value}`]: theme.value,
+        [`cloud-size-${size.value}`]: size.value,
+        [`cloud-level-${level.value}`]: level.value,
       };
     });
     return { classes };
@@ -80,7 +76,7 @@ $grey: grey;
   border: 1px solid $border-color;
   border-radius: $radius;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
-  transition: background 250ms;
+  transition: background 300ms cubic-bezier(.645,.045,.355,1);
   & + & {
     margin-left: 8px;
   }
@@ -95,13 +91,22 @@ $grey: grey;
   &::-moz-focus-inner {
     border: 0;
   }
+  &.cloud-theme-primary{
+    background-color: #1890ff;
+    color:white;
+    box-shadow: none;
+    &:hover,
+    &:focus{
+      background-color: #40a9ff;
+    }
+  }
   &.cloud-theme-link {
     border-color: transparent;
     box-shadow: none;
     color: $blue;
     &:hover,
     &:focus {
-      color: lighten($blue, 10%);
+      color: lighten($blue, 7%);
     }
   }
   &.cloud-theme-text {
