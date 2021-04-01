@@ -1,7 +1,7 @@
 <template>
   <button class="cloud-button" :class="classes" :disabled="disabled">
     <span v-if="loading" class="cloud-loadingIndicator"></span>
-    <slot />
+      <slot />
   </button>
 </template>
 <script lang="ts">
@@ -16,9 +16,9 @@ export default {
       type: String,
       default: "default",
     },
-    level: {
-      type: String,
-      default: "normal",
+    danger: {
+      type: Boolean,
+      default: false,
     },
     disabled: {
       type: Boolean,
@@ -28,58 +28,63 @@ export default {
       type: Boolean,
       default: false
     },
-    
+    shape:{
+      type:String,
+      default:"square"
+    }
   },
   setup(props) {
-    const { theme, size, level } = toRefs(props);
+    const { theme, size, danger,shape } = toRefs(props);
     const classes = computed(function(){
-      return {
-        [`cloud-theme-${theme.value}`]: theme.value,
-        [`cloud-size-${size.value}`]: size.value,
-        [`cloud-level-${level.value}`]: level.value,
-      };
+      let classObj = {};
+      if(size.value !== 'default'){
+        classObj[`cloud-size-${size.value}`]= size.value
+      }
+      if(danger.value){
+        classObj['cloud-danger'] = danger.value
+      }
+      if(shape.value === 'round'){
+        classObj['cloud-button-round'] = shape.value
+      }
+      classObj[`cloud-theme-${theme.value}`] = theme.value
+      return classObj;
     });
     return { classes };
   },
 };
 </script>
 <style lang="scss">
-$h: 32px;
-$border-color: #f0f0f0;
+$h: 31px;
+$border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
 $grey: grey;
+$disableFontColor:rgb(0,0,0,.25);
+$disableColor1:#f5f5f5;
 [class^="cloud-"], [class*=" cloud-"] {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-size: 16px;
-  font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica,
-    "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB",
-    "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN",
-    "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
-    SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
 }
 .cloud-button {
   box-sizing: border-box;
   height: $h;
-  padding: 0 12px;
+  padding: 5px 17px;
   cursor: pointer;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
   white-space: nowrap;
   background: white;
   color: $color;
   border: 1px solid $border-color;
   border-radius: $radius;
-  box-shadow: 0 1px 0 fade-out(black, 0.95);
-  transition: background 300ms cubic-bezier(.645,.045,.355,1);
-  & + & {
-    margin-left: 8px;
-  }
+  box-shadow: 0 1px 0 fade-out(black, 0.98);
+  transition: all 300ms cubic-bezier(.645,.045,.355,1);
+  font-size:14px;
+  line-height:1.4;
+  margin-right: 8px;
   &:hover,
   &:focus {
     color: $blue;
@@ -88,25 +93,60 @@ $grey: grey;
   &:focus {
     outline: none;
   }
+  &.cloud-button-round{
+    border-radius: 19.5px;
+  }
   &::-moz-focus-inner {
     border: 0;
   }
   &.cloud-theme-primary{
-    background-color: #1890ff;
+    $primaryColor:#1890ff;
+    $primaryBorder:#40a9ff;
+    background-color: $primaryColor;
     color:white;
     box-shadow: none;
+    border-color: $primaryColor;
     &:hover,
     &:focus{
-      background-color: #40a9ff;
+      background-color: $primaryBorder;
+      border-color:$primaryBorder;
+    }
+    &.cloud-danger{
+      background:$red;
+      border-color: $red;
+      &:hover,
+      &:focus{
+        background-color: lighten($red, 18%);
+        border-color: lighten($red, 18%);
+      }
     }
   }
-  &.cloud-theme-link {
-    border-color: transparent;
-    box-shadow: none;
-    color: $blue;
-    &:hover,
-    &:focus {
-      color: lighten($blue, 7%);
+  &.cloud-theme-button {
+      &.cloud-danger {
+        background: $red;
+        border-color: $red;
+        color: white;
+        &:hover,
+        &:focus {
+          background-color: lighten($red, 18%);
+          border-color: lighten($red, 18%);
+        }
+      }
+      
+  }
+  &.cloud-theme-dashed{
+    border:1px dashed #d9d9d9;
+    &:hover,&:focus{
+      border:1px dashed $blue;
+    }
+    &.cloud-danger {
+      color: $red;
+      border-color:$red;
+      &:hover,
+      &:focus {
+        color: lighten($red, 18%);
+        border-color: lighten($red, 18%);
+      }
     }
   }
   &.cloud-theme-text {
@@ -117,77 +157,70 @@ $grey: grey;
     &:focus {
       background: darken(white, 5%);
     }
-  }
-  &.cloud-size-big {
-    font-size: 24px;
-    height: 48px;
-    padding: 0 16px;
-  }
-  &.cloud-size-small {
-    font-size: 12px;
-    height: 20px;
-    padding: 0 4px;
-  }
-  &.cloud-theme-button {
-    &.cloud-level-main {
-      background: $blue;
-      color: white;
-      border-color: $blue;
+    &.cloud-danger {
+      color: $red;
       &:hover,
       &:focus {
-        background: darken($blue, 10%);
-        border-color: darken($blue, 10%);
-      }
-    }
-    &.cloud-level-danger {
-      background: $red;
-      border-color: $red;
-      color: white;
-      &:hover,
-      &:focus {
-        background: darken($red, 10%);
-        border-color: darken($red, 10%);
+        color: lighten($red, 18%);
       }
     }
   }
   &.cloud-theme-link {
-    &.cloud-level-danger {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,
+    &:focus {
+      color: lighten($blue, 7%);
+    }
+    &.cloud-danger {
       color: $red;
       &:hover,
       &:focus {
-        color: darken($red, 10%);
+        color: lighten($red, 18%);
       }
     }
   }
-  &.cloud-theme-text {
-    &.cloud-level-main {
-      color: $blue;
-      &:hover,
-      &:focus {
-        color: darken($blue, 10%);
-      }
-    }
-    &.cloud-level-danger {
-      color: $red;
-      &:hover,
-      &:focus {
-        color: darken($red, 10%);
-      }
+  &.cloud-size-big {
+    height: 40px;
+    font-size: 16px;
+    padding: 12px 18px;
+    line-height:0.5;
+    &.cloud-button-round{
+      border-radius: 20px;
     }
   }
-  &.cloud-theme-button {
+  &.cloud-size-small {
+    height:24px;
+    padding: 2px 10px;
+    line-height:1.4;
+    &.cloud-button-round{
+      border-radius: 12px;
+    }
+  }
+  &.cloud-theme-primary,&.cloud-theme-button,&.cloud-theme-primary.cloud-danger,&.cloud-theme-button.cloud-danger{
+    &[disabled] {
+      cursor: not-allowed;
+      color: $disableFontColor;
+      background-color:$disableColor1;
+      border-color: $border-color;
+    }
+  }
+  &.cloud-theme-dashed,&.cloud-theme-dashed.cloud-danger{
+    &[disabled] {
+      cursor: not-allowed;
+      color: $disableFontColor;
+      background-color:$disableColor1;
+      border:1px dashed $border-color;
+    }
+  }
+  &.cloud-theme-link, &.cloud-theme-text,&.cloud-theme-link.cloud-danger, &.cloud-theme-text.cloud-danger {
     &[disabled] {
       cursor: not-allowed;
       color: $grey;
-      &:hover {
-        border-color: $grey;
-      }
     }
-  }
-  &.cloud-theme-link, &.cloud-theme-text {
-    &[disabled] {
-      cursor: not-allowed;
-      color: $grey;
+    &:hover,&:focus{
+      background: transparent;
     }
   }
   > .cloud-loadingIndicator{
@@ -199,6 +232,7 @@ $grey: grey;
     border-color: $blue $blue $blue transparent;
     border-style: solid;
     border-width: 2px;
+    vertical-align: -0.135em;
     animation: cloud-spin 1s infinite linear;
   }
 }
