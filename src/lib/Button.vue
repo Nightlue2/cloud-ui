@@ -123,13 +123,13 @@ $disableColor1:#f5f5f5;
   }
   &.cloud-theme-button {
       &.cloud-danger {
-        background: $red;
+        background-color: white;
         border-color: $red;
-        color: white;
+        color: $red;
         &:hover,
         &:focus {
-          background-color: lighten($red, 18%);
-          border-color: lighten($red, 18%);
+          border-color: lighten($red, 20%);
+          color:lighten($red, 20%);
         }
       }
       

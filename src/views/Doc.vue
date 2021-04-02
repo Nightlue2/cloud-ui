@@ -87,6 +87,9 @@ export default {
         .rest{
             width:100vw;
             display:flex;
+            article{
+                width: 850px;
+            }
             > aside{
                 width:$doc-aside-w;
                 height:$doc-main-height;
@@ -94,6 +97,7 @@ export default {
                 top:$doc-top-margin;
                 padding-top:30px;
                 color:rgb(0,0,0,0.65);
+                background-color: white;
                 font-family: Avenir,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
                 &::after{
                     position: absolute;
@@ -155,6 +159,8 @@ export default {
                 padding-left:60px;
                 padding-top:50px;
                 padding-right:10.42vw;
+                display:flex;
+                place-content: center;
                 > .doc-content{
                     height: auto;
                     padding-left:4.95vw;
@@ -174,14 +180,22 @@ export default {
         font-size: 24px;
         .rest{
             width:100vw;
-            display:flex;
+            main{
+                display:flex;
+                place-content: center;
+                article{
+                    min-width: 470px;
+                }
+            }
             > aside{
                 width:200px;
                 height:$doc-main-height;
                 position: fixed;
                 top:$doc-top-margin;
+                left:0;
                 padding-top:30px;
                 color:rgb(0,0,0,0.65);
+                background-color: white;
                 font-family: -apple-system,"Noto Sans","Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,"Liberation Sans","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Source Han Sans SC","Source Han Sans CN","Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Zen Hei","ST Heiti",SimHei,"WenQuanYi Zen Hei Sharp",sans-serif;
                 &::after{
                     position: absolute;
@@ -243,7 +257,6 @@ export default {
                 padding-right:1vw;
                 > .doc-content{
                     height: auto;
-                    padding-left:50px;
                     line-height: 1.7em;
                 }
             }
@@ -268,6 +281,7 @@ export default {
                 position: fixed;
                 top:65px;
                 color:rgb(0,0,0,0.65);
+                background-color: white;
                 font-family: -apple-system,"Noto Sans","Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,"Liberation Sans","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Source Han Sans SC","Source Han Sans CN","Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Zen Hei","ST Heiti",SimHei,"WenQuanYi Zen Hei Sharp",sans-serif;
                 background-color:white;
                 &::after{
@@ -328,6 +342,10 @@ export default {
                     height: auto;
                     padding:10px 2.67vw 20px 4.8vw;
                     line-height: 1.7em;
+                    h1{
+                        font-size:20px;
+                        margin:0;
+                    }
                 }
             }
             

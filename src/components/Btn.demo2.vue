@@ -1,7 +1,12 @@
+<demo>
+按钮尺寸#按钮有大、中、小三种尺寸。可以通过标签上的size属性来设置按钮的不同尺寸。
+</demo>
 <template>
 <div>
-    <Button v-for="(item,name) in buttonList" :key="item" :size="btnsize" @click="changeSize(name)" >{{item}}</Button>
-  
+    <Button :size="btnsize" @click="changeSize('big')">Big</Button>
+    <Button :size="btnsize" @click="changeSize('default')">Default</Button>
+    <Button :size="btnsize" @click="changeSize('small')">Small</Button>
+
   <div class="btnDemoContainer">
     <Button :size="btnsize" theme="primary">主按钮</Button>
     <Button :size="btnsize">默认按钮</Button>
@@ -20,12 +25,11 @@ export default {
     Button
   },
   setup(){
-    let btnsize = ref('defa');
-    let buttonList = {'big':'Big','default':'Default','small':'Small'}
+    let btnsize = ref('default');
     function changeSize(newsize:string){
       btnsize.value = newsize;
     }
-    return {btnsize,changeSize,buttonList}
+    return {btnsize,changeSize}
   }
 }
 </script>

@@ -1,3 +1,6 @@
+<demo>
+加载中状态#添加loading属性可以为按钮设置加载中的状态。
+</demo>
 <template>
 <div>
   <Button loading>加载中</Button>

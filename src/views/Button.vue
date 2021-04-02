@@ -36,6 +36,9 @@ export default {
 .btnDemoContainer{
   margin:15px auto;
   line-height:1em;
+  @media (max-width:770px) {
+    line-height:inherit;
+  }
   &:first-child{
     margin-top:0;
   }
