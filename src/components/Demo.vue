@@ -7,8 +7,11 @@
     <div class="demo-description-title">{{descriptions[0]}}</div>
     <p class="demo-description-content">{{descriptions[1]}}</p>
     <button class="demo-showcode" @click="toggleCode">
-      <svg class="icon demo-svg-code" >
-        <use xlink:href="#icon-code"></use>
+      <svg class="icon demo-svg-code" :class="{'demo-svg-show':!codeVisible,'demo-svg-hide':codeVisible}">
+        <use xlink:href="#icon-code-close"></use>
+      </svg>
+      <svg class="icon demo-svg-code" :class="{'demo-svg-show':codeVisible,'demo-svg-hide':!codeVisible}">
+        <use xlink:href="#icon-code-open"></use>
       </svg>
     </button>
     
@@ -107,12 +110,24 @@ $border-color: #d9d9d9;
       top:50%;
       right:10px;
       transform: translateY(-50%);
+      width: 20px;
+      height:20px;
       &:hover,&:focus{
           cursor:pointer;
       }
       > .demo-svg-code{
         width:20px;
         height: 20px;
+        position: absolute;
+        left:0;
+        top:0;
+        transition:opacity 0.5s ease;
+      }
+      > .demo-svg-show{
+        opacity:1;
+      }
+      > .demo-svg-hide{
+        opacity:0;
       }
   }
   &-code {
