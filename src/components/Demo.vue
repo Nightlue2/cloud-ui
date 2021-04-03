@@ -78,7 +78,8 @@ $border-color: #d9d9d9;
   }
 
   &-component {
-    padding: 24px 24px;
+    padding: 40px 24px 50px 30px;
+    line-height: 1em;
   }
 
   &-actions {
@@ -112,8 +113,10 @@ $border-color: #d9d9d9;
       transform: translateY(-50%);
       width: 20px;
       height:20px;
+      color:rgba(0,0,0,.45);
       &:hover,&:focus{
           cursor:pointer;
+          color:rgba(0,0,0,.85);
       }
       > .demo-svg-code{
         width:20px;
@@ -121,7 +124,8 @@ $border-color: #d9d9d9;
         position: absolute;
         left:0;
         top:0;
-        transition:opacity 0.5s ease;
+        transition:opacity 0.5s ease,color 0.3s linear;
+        color:inherit;
       }
       > .demo-svg-show{
         opacity:1;
