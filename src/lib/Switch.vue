@@ -66,6 +66,20 @@ $switch-unchecked-color:#bfbfbf;
            width: $switch-small-h2 + 2px; margin-left: -2px; 
       }
   }
+  &:active.cloud-switch-small.cloud-switch-disabled{
+      >span{
+          width:$switch-small-h2;
+          height:$switch-small-h2;
+          margin-left:0;
+      }
+  }
+  &:active.cloud-switch-disabled{
+      >span{
+          width:$h2;
+          height:$h2;
+          margin-left:0;
+      }
+  }
   &-disabled{
       cursor:not-allowed;
       opacity: 0.5;
