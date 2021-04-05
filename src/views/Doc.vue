@@ -165,7 +165,11 @@ export default {
                     height: auto;
                     padding-left:4.95vw;
                     line-height: 1.7em;
-                    
+                    &::after{
+                        content:'';
+                        display: block;
+                        height:50px;
+                    }
                 }
             }
             

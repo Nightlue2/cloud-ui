@@ -5,7 +5,6 @@
   <Demo :component="SwitchDemo2" />
   <Demo :component="SwitchDemo3" />
   <Demo :component="SwitchDemo4" />
-
 </div>
 </template>
 
@@ -15,7 +14,6 @@ import SwitchDemo1 from "../components/Switch.demo1.vue";
 import SwitchDemo2 from "../components/Switch.demo2.vue";
 import SwitchDemo3 from "../components/Switch.demo3.vue";
 import SwitchDemo4 from "../components/Switch.demo4.vue";
-// import BtnDemo5 from "../components/Btn.demo5.vue";
 export default {
   components: {
     Demo
@@ -32,5 +30,4 @@ export default {
 </script>
 <style lang="scss">
 @import '../example.scss';
-
 </style>
