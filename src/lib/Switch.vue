@@ -1,5 +1,5 @@
 <template>
-  <button class="cloud-switch" @click="toggle" :class="{'cloud-switch-checked':value,'cloud-switch-disabled':disabled,'cloud-switch-small':size}">
+  <button class="cloud-switch" @click="toggle" :class="{'cloud-switch-checked':value,'cloud-switch-disabled':disabled || loading,'cloud-switch-small':size,'cloud-switch-loading':loading}">
     <span></span>
   </button>
 </template>
@@ -8,14 +8,17 @@ export default {
   props: {
     value: Boolean,
     disabled:Boolean,
-    size:String
+    size:String,
+    loading:Boolean
   },
   setup(props, context) {
     const toggle = () => {
-      context.emit("update:value", !props.value);
+      if(props.loading!==true && props.disabled!==true){
+        context.emit("update:value", !props.value);
+      }
     };
     return { toggle };
-  }
+  },
 };
 </script>
 
@@ -44,40 +47,39 @@ $switch-unchecked-color:#bfbfbf;
       }
   }
   &:focus { outline: none; }
-  &:active {
+  &:not(.cloud-switch-disabled):active {
     > span { width: $h2 + 4px; }
   }
-  &:active.cloud-switch-checked {
+  &:not(.cloud-switch-disabled):active.cloud-switch-checked {
     > span { width: $h2 + 4px; margin-left: -4px; }
   }
   &-small{
       height: $switch-small-h; width: $switch-small-h * 2; border-radius: $switch-small-h / 2;
       >span{
           height: $switch-small-h2; width: $switch-small-h2; border-radius: $switch-small-h2 / 2; left:2px;top:2px;
+          &::before{
+            content:'';
+            width:67%;
+            height: 67%;
+            display: block;
+            border: 2px solid $switch-checked-color;
+            border-color:$switch-checked-color transparent transparent transparent;
+            border-radius: 100%;
+            position:relative;
+            transform: rotate(45deg);
+            left:6%;
+            top:3%;
+          }
       }
   }
-  &:active.cloud-switch-small{
+  &:not(.cloud-switch-disabled):active.cloud-switch-small{//小按钮-未选中-点击状态
       >span{
           width: $switch-small-h2 + 2px;
       }
   }
-  &:active.cloud-switch-checked.cloud-switch-small{
+  &:not(.cloud-switch-disabled):active.cloud-switch-checked.cloud-switch-small{//小按钮-选中-点击状态
       >span{
            width: $switch-small-h2 + 2px; margin-left: -2px; 
-      }
-  }
-  &:active.cloud-switch-small.cloud-switch-disabled{
-      >span{
-          width:$switch-small-h2;
-          height:$switch-small-h2;
-          margin-left:0;
-      }
-  }
-  &:active.cloud-switch-disabled{
-      >span{
-          width:$h2;
-          height:$h2;
-          margin-left:0;
       }
   }
   &-disabled{
@@ -88,6 +90,25 @@ $switch-unchecked-color:#bfbfbf;
       }
       >span{
           cursor:inherit;
+      }
+  }
+  &-loading{
+    >span{
+          cursor:inherit;
+          &::before{
+            content:'';
+            width:12px;
+            height: 12px;
+            display: block;
+            border: 2px solid $switch-checked-color;
+            border-color:$switch-checked-color transparent transparent transparent;
+            border-radius: 100%;
+            position:relative;
+            transform: rotate(45deg);
+            left:6%;
+            top:3%;
+            cursor:not-allowed;         
+          }  
       }
   }
 }

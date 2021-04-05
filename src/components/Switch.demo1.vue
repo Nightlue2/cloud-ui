@@ -2,7 +2,7 @@
 基本用法#将一个布尔值传给该组件，然后通过点击开关变更该布尔值
 </demo>
 <template>
-    <Switch v-model:value="checked" />
+    <Switch v-model:value="checked" xxx="s" @click="fn"/>
 </template>
 
 <script lang="ts">
@@ -18,6 +18,11 @@ export default {
     const checked = ref(true)
     return {
       checked
+    }
+  },
+  methods:{
+    fn(e){
+      console.log(e);
     }
   }
 }

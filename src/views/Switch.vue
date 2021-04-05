@@ -4,6 +4,7 @@
   <Demo :component="SwitchDemo1" />
   <Demo :component="SwitchDemo2" />
   <Demo :component="SwitchDemo3" />
+  <Demo :component="SwitchDemo4" />
 
 </div>
 </template>
@@ -13,7 +14,7 @@ import Demo from "../components/Demo.vue";
 import SwitchDemo1 from "../components/Switch.demo1.vue";
 import SwitchDemo2 from "../components/Switch.demo2.vue";
 import SwitchDemo3 from "../components/Switch.demo3.vue";
-// import BtnDemo4 from "../components/Btn.demo4.vue";
+import SwitchDemo4 from "../components/Switch.demo4.vue";
 // import BtnDemo5 from "../components/Btn.demo5.vue";
 export default {
   components: {
@@ -23,7 +24,8 @@ export default {
     return {
       SwitchDemo1,
       SwitchDemo2,
-      SwitchDemo3
+      SwitchDemo3,
+      SwitchDemo4
     };
   },
 };
