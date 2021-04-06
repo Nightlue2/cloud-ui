@@ -160,7 +160,7 @@ export default {
                 padding-top:50px;
                 padding-right:10.42vw;
                 display:flex;
-                place-content: center;
+                justify-content: center;
                 > .doc-content{
                     height: auto;
                     padding-left:4.95vw;

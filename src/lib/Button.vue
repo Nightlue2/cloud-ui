@@ -80,7 +80,6 @@ $disableColor1:#f5f5f5;
   color: $color;
   border: 1px solid $border-color;
   border-radius: $radius;
-  box-shadow: 0 1px 0 fade-out(black, 0.98);
   transition: all 300ms cubic-bezier(.645,.045,.355,1);
   font-size:14px;
   line-height:1.4;
