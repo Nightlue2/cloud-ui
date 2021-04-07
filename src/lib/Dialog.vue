@@ -1,23 +1,27 @@
 <template>
     <template v-if="visible">
-        <Teleport to="#app">
+        <teleport to="body" :disabled="false">
             <div class="cloud-dialog-overlay" @click="onClickOverlay"></div>
             <div class="cloud-dialog-wrapper">
                 <div class="cloud-dialog">
                     <header>
                         <slot name="title" />
-                        <span @click="close" class="cloud-dialog-close"></span>
+                        <div @click="close" class="cloud-dialog-close">
+                          <svg class="icon">
+                            <use xlink:href="#icon-dialog-close"></use>
+                          </svg>
+                        </div>
                     </header>
                     <main>
                         <slot name="content" />
                     </main>
                     <footer>
-                        <Button theme="primary" @click="ok">OK</Button>
-                        <Button @click="cancel">Cancel</Button>
+                        <Button @click="cancel">取消</Button>
+                        <Button theme="primary" @click="confirm">确定</Button>
                     </footer>
                 </div>
             </div>
-        </Teleport>
+        </teleport>
     </template>
 </template>
 
@@ -33,7 +37,8 @@ export default {
       type: Boolean,
       default: true
     },
-    ok: Function,
+    moveDialog:Boolean,
+    confirm: Function,
     cancel: Function
   },
   components: {
@@ -48,8 +53,8 @@ export default {
         close()
       }
     }
-    const ok = () => {
-      props.ok?.()
+    const confirm = () => {
+      props.confirm?.()
       close()
     }
     const cancel = () => {
@@ -59,24 +64,35 @@ export default {
     return {
       close,
       onClickOverlay,
-      ok,
+      confirm,
       cancel
     }
+  },
+  mounted(){
+    console.log('dialog组件已经创建并挂载了')
+  },
+  unmounted(){
+    console.log('dialog组件已经销毁了');
   }
 };
 </script>
 
 <style lang="scss">
-$radius: 4px;
-$border-color: #d9d9d9;
+@import '../example.scss';
+$radius: 2px;
+$border-color: #f0f0f0;
 
 .cloud-dialog {
+  border:none;
   background: white;
   border-radius: $radius;
-  box-shadow: 0 0 3px fade_out(black, 0.5);
-  min-width: 15em;
-  max-width: 90%;
-
+  box-shadow: 5px 6px 17px -4px fade_out(black, 0.75);
+  @media (min-width:500px){
+    width:520px;
+  }
+  @media (max-width:500px){
+    width:350px;
+  }
   &-overlay {
     position: fixed;
     top: 0;
@@ -90,22 +106,24 @@ $border-color: #d9d9d9;
   &-wrapper {
     position: fixed;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 30%;
+    transform: translate(-50%,-50%);
     z-index: 11;
   }
 
   >header {
     padding: 12px 16px;
+    padding-left:24px;
     border-bottom: 1px solid $border-color;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     font-size: 20px;
+    width:auto;
+    position:relative;
   }
 
   >main {
-    padding: 12px 16px;
+    padding: 22px 21px;
   }
 
   >footer {
@@ -115,31 +133,38 @@ $border-color: #d9d9d9;
   }
 
   &-close {
-    position: relative;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      height: 1px;
-      background: black;
-      width: 100%;
-      top: 50%;
-      left: 50%;
+    left:100%;
+    transform:translateX(-200%);
+    border-radius: 50%;
+    color:rgba(0,0,0,.45);
+    transition:color 0.4s ease;
+    &:hover,&:focus{
+      color:darken(black,8%);
+      &::after{
+        transform:scale(1);
+      }
     }
-
-    &::before {
-      transform: translate(-50%, -50%) rotate(-45deg);
+    &::after{
+      content:'';
+      display:block;
+      position:absolute;
+      right:-10px;
+      top:-10px;
+      width:200%;
+      height:200%;
+      border-radius: 50%;
+      transform: scale(0);
+      transition:all .5s ease;
+      background-color:$theme-color;
+      z-index:-1;
     }
-
-    &::after {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-
   }
 }
 </style>

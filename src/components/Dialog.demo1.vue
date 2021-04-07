@@ -4,14 +4,14 @@
 <template>
     <div>
     <Button @click="toggle">打开对话框</Button>
-    <Dialog v-model:visible="x" :closeOnClickOverlay="false" :ok="f1" :cancel="f2">
-        <template v-slot:content>
-            <h1>h1标题</h1>
-            <h2>h2标题</h2>
-            <p>内容部分</p>
-        </template>
+    <Dialog v-model:visible="x" :closeOnClickOverlay="false" :ok="f1" :cancel="f2" >
         <template v-slot:title>
-        <div>对话框</div>
+          <div>对话框</div>
+        </template>
+        <template v-slot:content>
+            <p>内容部分</p>
+            <p>内容部分</p>
+            <p>内容部分</p>
         </template>
     </Dialog>
     </div>

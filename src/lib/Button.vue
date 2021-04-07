@@ -57,8 +57,8 @@ export default {
 $h: 31px;
 $border-color: #d9d9d9;
 $color: #333;
-$blue: #40a9ff;
-$radius: 4px;
+$blue: #39c0db;
+$radius: 2px;
 $red: red;
 $grey: grey;
 $disableFontColor:rgb(0,0,0,.25);
@@ -88,8 +88,6 @@ $disableColor1:#f5f5f5;
   &:focus {
     color: $blue;
     border-color: $blue;
-  }
-  &:focus {
     outline: none;
   }
   &.cloud-button-round{
@@ -99,16 +97,14 @@ $disableColor1:#f5f5f5;
     border: 0;
   }
   &.cloud-theme-primary{
-    $primaryColor:#1890ff;
-    $primaryBorder:#40a9ff;
-    background-color: $primaryColor;
+    background-color: $blue;
     color:white;
     box-shadow: none;
-    border-color: $primaryColor;
+    border-color: $blue;
+    border:none;
     &:hover,
     &:focus{
-      background-color: $primaryBorder;
-      border-color:$primaryBorder;
+      background-color: lighten($blue,8%);
     }
     &.cloud-danger{
       background:$red;
@@ -149,12 +145,12 @@ $disableColor1:#f5f5f5;
     }
   }
   &.cloud-theme-text {
-    border-color: transparent;
+    border:none;
     box-shadow: none;
     color: inherit;
     &:hover,
     &:focus {
-      background: darken(white, 5%);
+      background: darken(white, 4%);
     }
     &.cloud-danger {
       color: $red;
@@ -213,7 +209,7 @@ $disableColor1:#f5f5f5;
       border:1px dashed $border-color;
     }
   }
-  &.cloud-theme-link, &.cloud-theme-text,&.cloud-theme-link.cloud-danger, &.cloud-theme-text.cloud-danger {
+  &.cloud-theme-link,&.cloud-theme-link.cloud-danger, &.cloud-theme-text.cloud-danger {
     &[disabled] {
       cursor: not-allowed;
       color: $grey;
