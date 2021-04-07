@@ -3,6 +3,7 @@
         <h1>Dialog 对话框</h1>
         <Demo :component="DialogDemo1" />
         <Demo :component="DialogDemo2" />
+        <Demo :component="DialogDemo3" />
     </div>
 
 </template>
@@ -11,6 +12,7 @@
 import Demo from '../components/Demo.vue';
 import DialogDemo1 from '../components/Dialog.demo1.vue';
 import DialogDemo2 from '../components/Dialog.demo2.vue';
+import DialogDemo3 from '../components/Dialog.demo3.vue';
 export default {
   components: {
     Demo
@@ -18,7 +20,8 @@ export default {
   setup() {
     return {
       DialogDemo1,
-      DialogDemo2
+      DialogDemo2,
+      DialogDemo3
     }
   }
 }

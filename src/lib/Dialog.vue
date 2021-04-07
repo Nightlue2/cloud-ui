@@ -3,7 +3,7 @@
         <teleport to="body" :disabled="false">
             <div class="cloud-dialog-overlay" @click="onClickOverlay"></div>
             <div class="cloud-dialog-wrapper">
-                <div class="cloud-dialog">
+                <div class="cloud-dialog" :style="cloudDialogStyle">
                     <header>
                         <slot name="title" />
                         <div @click="close" class="cloud-dialog-close">
@@ -38,6 +38,7 @@ export default {
       default: true
     },
     moveDialog:Boolean,
+    width:String,
     confirm: Function,
     cancel: Function
   },
@@ -45,6 +46,14 @@ export default {
     Button,
   },
   setup(props, context) {
+    const w = Number(props.width);
+    let cloudDialogStyle = {width:''};
+    if(typeof w === 'number'&& w !==NaN && w !== 0){
+      cloudDialogStyle.width = w+'px'
+    }
+    if(cloudDialogStyle.width === ''){
+      cloudDialogStyle = null;
+    }
     const close = () => {
       context.emit('update:visible', false)
     }
@@ -62,6 +71,7 @@ export default {
       close()
     }
     return {
+      cloudDialogStyle,
       close,
       onClickOverlay,
       confirm,
