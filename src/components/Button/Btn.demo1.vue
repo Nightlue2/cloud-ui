@@ -1,5 +1,5 @@
 <demo>
-按钮类型#按钮有五种类型：主按钮，默认按钮，虚线按钮、文本按钮和链接按钮，可以通过标签上的theme属性来控制。圆角的按钮则可以通过标签上的shape属性来设置。
+按钮类型#按钮有五种类型：主按钮，默认按钮，虚线按钮、文本按钮和链接按钮，可以通过标签上的 <span class="cloud-font-strong">theme</span> 属性来控制。圆角的按钮则可以通过标签上的 <span class="cloud-font-strong">shape</span> 属性来设置。
 </demo>
 <template>
 <div>

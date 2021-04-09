@@ -1,7 +1,7 @@
 <template>
 <div class="cloud-tabs">
-  <div class="cloud-tabs-nav" ref="container">
-    <div class="cloud-tabs-nav-item" v-for="(t,index) in titles" :ref="el => { if (t===selected) selectedItem = el }" @click="select(t)" :class="{selected: t=== selected}" :key="index">{{t}}</div>
+  <div class="cloud-tabs-nav" ref="container" :class="{'cloud-tabs-center':center}">
+    <div class="cloud-tabs-nav-item" v-for="(t,index) in titles" :ref="el => { if (t===selected) selectedItem = el }" @click="select(t)" :class="{selected: t===selected,disabled:t===disabled}" :key="index">{{t}}</div>
     <div class="cloud-tabs-nav-indicator" ref="indicator"></div>
   </div>
   <div class="cloud-tabs-content">
@@ -11,18 +11,26 @@
 </template>
 
 <script lang="ts">
-import Tab from './Tab.vue'
 import {
   computed,
   ref,
   watchEffect,
   onMounted
-} from 'vue'
+} from 'vue';
+export const Tab = {
+        template:`
+            <div>
+                <slot />
+            </div>
+        `,
+}
 export default {
   props: {
     selected: {
       type: String
-    }
+    },
+    disabled:String,
+    center:Boolean,
   },
   setup(props, context) {
     const selectedItem = ref < HTMLDivElement > (null)
@@ -46,20 +54,25 @@ export default {
       })
     })
 
-    const defaults = context.slots.default()
-    defaults.forEach((tag) => {
-      if (tag.type !== Tab) {
-        throw new Error('Tabs 子标签必须是 Tab')
+    const defaults = context.slots.default() //首先拿到传递的tab组件
+    defaults.forEach((tab) => {
+      if (tab.type !== Tab) {
+        throw new Error('Tabs 子标签必须是 Tab')//如果不是tab组件就报错
       }
     })
     const current = computed(() => {
-      return defaults.find(tag => tag.props.title === props.selected)
+      return defaults.find(tab => tab.props.title === props.selected)//找到当前被选中的tab
     })
-    const titles = defaults.map((tag) => {
-      return tag.props.title
+    const disabledTab = computed(()=>{
+        return defaults.find(tab=> tab.props.title === props.disabled)//找到当前不可点击的tab
+    })
+    const titles = defaults.map((tab) => {
+      return tab.props.title //获取当前所有的tab组件的title
     })
     const select = (title: string) => {
-      context.emit('update:selected', title)
+        if(title !== props.disabled){
+            context.emit('update:selected', title)
+        }
     }
     return {
       current,
@@ -68,14 +81,15 @@ export default {
       select,
       selectedItem,
       indicator,
-      container
+      container,
+      disabledTab
     }
   }
 }
 </script>
 
 <style lang="scss">
-$blue: #40a9ff;
+$blue: #5ec5db;
 $color: #333;
 $border-color: #d9d9d9;
 
@@ -98,6 +112,10 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+      &.disabled{
+          cursor:not-allowed;
+          opacity: 0.5;
+      }
     }
 
     &-indicator {
@@ -112,7 +130,12 @@ $border-color: #d9d9d9;
   }
 
   &-content {
-    padding: 8px 0;
+    padding: 20px 0;
+    overflow-wrap: break-word;
   }
+}
+.cloud-tabs-center{
+    display:flex;
+    justify-content: center;
 }
 </style>

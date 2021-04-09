@@ -131,4 +131,9 @@ $switch-unchecked-color:#bfbfbf;
     transform: rotate(360deg);
   }
 }
+.cloud-font-strong {
+  color: #39b6d2;
+  font-size: 14px;
+  font-weight: bold;
+}
 </style>

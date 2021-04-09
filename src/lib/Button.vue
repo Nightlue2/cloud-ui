@@ -237,4 +237,9 @@ $disableColor1:#f5f5f5;
   0%{transform: rotate(0deg)} 
   100%{transform: rotate(360deg)} 
 }
+.cloud-font-strong {
+  color: #39b6d2;
+  font-size: 14px;
+  font-weight: bold;
+}
 </style>

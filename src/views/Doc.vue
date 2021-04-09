@@ -41,6 +41,12 @@
                         <span class="chinese">标签页</span>
                         </router-link>
                     </li>
+                    <li>
+                        <router-link to="/doc/Alert">
+                        <span>Alert</span>
+                        <span class="chinese">警告提示</span>
+                        </router-link>
+                    </li>
                 </ol>
             </aside>
             <main>

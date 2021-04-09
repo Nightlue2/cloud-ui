@@ -1,5 +1,5 @@
 <demo>
-禁用状态#添加disabled属性以使得按钮处于无法点击的禁用状态。
+禁用状态#添加 <span class="cloud-font-strong">disabled</span> 属性以使得按钮处于无法点击的禁用状态。
 </demo>
 <template>
   <div class="btnDemoContainer">

@@ -1,5 +1,5 @@
 <demo>
-危险按钮#danger属性可以控制是否要将按钮设置为危险类型，对用户的操作给予视觉上的警告。
+危险按钮# <span class="cloud-font-strong">danger</span> 属性可以控制是否要将按钮设置为危险类型，对用户的操作给予视觉上的警告。
 </demo>
 <template>
 <div>

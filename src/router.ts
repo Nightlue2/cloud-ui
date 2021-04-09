@@ -8,6 +8,7 @@ import Button from './views/Button.vue';
 import Dialog from './views/Dialog.vue';
 import Switch from './views/Switch.vue';
 import Tabs from './views/Tabs.vue';
+import Alert from './views/Alert.vue';
 const md = filename => h(Markdown, { path: `../markdown/${filename}.md`, key: filename })
 export const router = createRouter({
     history:createWebHashHistory(),
@@ -23,6 +24,7 @@ export const router = createRouter({
           {path:'dialog',component:Dialog},
           {path:'switch',component:Switch},
           {path:'tabs',component:Tabs},
+          {path:'alert',component:Alert},
         ]
       },
       {path:'/:pathMatch(.*)*',component:NotFound}

@@ -1,5 +1,5 @@
 <demo>
-按钮尺寸#按钮有大、中、小三种尺寸。可以通过标签上的size属性来设置按钮的不同尺寸。
+按钮尺寸#按钮有大、中、小三种尺寸。可以通过标签上的 <span class="cloud-font-strong">size</span> 属性来设置按钮的不同尺寸。
 </demo>
 <template>
 <div>

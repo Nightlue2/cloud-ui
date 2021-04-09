@@ -123,10 +123,12 @@ $border-color: #f0f0f0;
     font-size: 20px;
     width:auto;
     position:relative;
+    overflow-wrap: break-word;
   }
 
   >main {
     padding: 22px 21px;
+    overflow-wrap:break-word;
   }
 
   >footer {
@@ -169,5 +171,10 @@ $border-color: #f0f0f0;
       z-index:-1;
     }
   }
+}
+.cloud-font-strong {
+  color: #39b6d2;
+  font-size: 14px;
+  font-weight: bold;
 }
 </style>

@@ -1,5 +1,5 @@
 <demo>
-加载中状态#添加loading属性可以为按钮设置加载中的状态。
+加载中状态#添加 <span class="cloud-font-strong">loading</span> 属性可以为按钮设置加载中的状态。
 </demo>
 <template>
 <div>
