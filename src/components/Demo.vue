@@ -5,7 +5,7 @@
   </div>
   <div class="demo-actions">
     <div class="demo-description-title">{{descriptions[0]}}</div>
-    <p class="demo-description-content">{{descriptions[1]}}</p>
+    <p class="demo-description-content" v-html="descriptions[1]"></p>
     <button class="demo-showcode" @click="toggleCode">
       <svg class="icon demo-svg-code" :class="{'demo-svg-show':!codeVisible,'demo-svg-hide':codeVisible}">
         <use xlink:href="#icon-code-close"></use>
@@ -39,6 +39,7 @@ export default {
     component: Object
   },
   setup(props) {
+    let p = props.component.__sourceCodeTitle
     const html = computed(() => {
       return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html')
     })
@@ -52,8 +53,12 @@ export default {
       html,
       codeVisible,
       toggleCode,
-      descriptions
+      descriptions,
+      p
     }
+  },
+  mounted(){
+    // console.log(this.p);
   }
 }
 </script>

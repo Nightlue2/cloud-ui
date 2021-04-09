@@ -1,9 +1,9 @@
 <template>
     <template v-if="visible">
-        <teleport to="body" :disabled="false">
+        <teleport to="#cloud-dialog-show" disabled="false">
             <div class="cloud-dialog-overlay" @click="onClickOverlay"></div>
             <div class="cloud-dialog-wrapper">
-                <div class="cloud-dialog" :style="cloudDialogStyle">
+                <div class="cloud-dialog" :style="cloudDialogStyle" >
                     <header>
                         <slot name="title" />
                         <div @click="close" class="cloud-dialog-close">
@@ -46,13 +46,12 @@ export default {
     Button,
   },
   setup(props, context) {
-    const w = Number(props.width);
+    const w = parseInt(props.width);
     let cloudDialogStyle = {width:''};
-    if(typeof w === 'number'&& w !==NaN && w !== 0){
+    if(!isNaN(w) && w !== 0){
       cloudDialogStyle.width = w+'px'
-    }
-    if(cloudDialogStyle.width === ''){
-      cloudDialogStyle = null;
+    }else{
+      cloudDialogStyle = null
     }
     const close = () => {
       context.emit('update:visible', false)
@@ -78,12 +77,6 @@ export default {
       cancel
     }
   },
-  mounted(){
-    console.log('dialog组件已经创建并挂载了')
-  },
-  unmounted(){
-    console.log('dialog组件已经销毁了');
-  }
 };
 </script>
 

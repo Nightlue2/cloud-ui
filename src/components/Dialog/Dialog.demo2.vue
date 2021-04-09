@@ -1,5 +1,5 @@
 <demo>
-快捷打开 Dialog#使用Dialog标签可能会使得生命周期钩子不会重复触发，而使用openDialog函数则能解决这个问题。
+openDialog函数#使用 <span class="cloud-font-strong">Dialog</span> 标签可能会使得生命周期钩子不会重复触发，而使用 <span class="cloud-font-strong">openDialog</span> 函数则能解决这个问题。
 </demo>
 <template>
 <div>
@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue'
+import Button from '../../lib/Button.vue'
 import {
   h
 } from 'vue'
-import {openDialog} from '../lib/openDialog'
+import {openDialog} from '../../lib/openDialog'
 export default {
   components: {
     Button
@@ -23,7 +23,7 @@ export default {
         title: h('strong', {}, '标题'),
         content: '你好',
         moveDialog:false,
-        ok() {
+        confirm() {
           console.log('ok')
         },
         cancel() {

@@ -1,10 +1,10 @@
 <demo>
-自定义宽度#设置width来改变对话框的宽度
+基本用法#创建一个对话框。
 </demo>
 <template>
-  <div>
-    <Button @click="toggle">打开对话框</Button>
-    <Dialog v-model:visible="x" :ok="f1" :cancel="f2" width="720">
+    <div>
+    <Button theme="primary" @click="toggle">打开对话框</Button>
+    <Dialog v-model:visible="x" :confirm="f1" :cancel="f2" >
         <template v-slot:title>
           <div>对话框</div>
         </template>
@@ -14,16 +14,18 @@
             <p>内容部分</p>
         </template>
     </Dialog>
-  </div>
+    </div>
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue'
+import Dialog from '../../lib/Dialog.vue'
+import Button from '../../lib/Button.vue'
 import {
   ref
 } from 'vue'
 export default {
   components: {
+    Dialog,
     Button
   },
   setup() {

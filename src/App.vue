@@ -1,5 +1,6 @@
 <template>
   <router-view class="all"/>
+  <div id="cloud-dialog-show"></div>
 </template>
 
 <script>

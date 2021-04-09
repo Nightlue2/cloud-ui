@@ -78,6 +78,7 @@ $disableColor1:#f5f5f5;
   white-space: nowrap;
   background: white;
   color: $color;
+  box-shadow:0 2px 0 rgb(0 0 0 / 2%);
   border: 1px solid $border-color;
   border-radius: $radius;
   transition: all 300ms cubic-bezier(.645,.045,.355,1);
@@ -131,6 +132,7 @@ $disableColor1:#f5f5f5;
   }
   &.cloud-theme-dashed{
     border:1px dashed #d9d9d9;
+    box-shadow:none;
     &:hover,&:focus{
       border:1px dashed $blue;
     }

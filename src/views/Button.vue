@@ -11,11 +11,11 @@
 
 <script lang="ts">
 import Demo from "../components/Demo.vue";
-import BtnDemo1 from "../components/Btn.demo1.vue";
-import BtnDemo2 from "../components/Btn.demo2.vue";
-import BtnDemo3 from "../components/Btn.demo3.vue";
-import BtnDemo4 from "../components/Btn.demo4.vue";
-import BtnDemo5 from "../components/Btn.demo5.vue";
+import BtnDemo1 from "../components/Button/Btn.demo1.vue";
+import BtnDemo2 from "../components/Button/Btn.demo2.vue";
+import BtnDemo3 from "../components/Button/Btn.demo3.vue";
+import BtnDemo4 from "../components/Button/Btn.demo4.vue";
+import BtnDemo5 from "../components/Button/Btn.demo5.vue";
 export default {
   components: {
     Demo

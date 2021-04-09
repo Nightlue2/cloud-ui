@@ -10,10 +10,10 @@
 
 <script lang="ts">
 import Demo from "../components/Demo.vue";
-import SwitchDemo1 from "../components/Switch.demo1.vue";
-import SwitchDemo2 from "../components/Switch.demo2.vue";
-import SwitchDemo3 from "../components/Switch.demo3.vue";
-import SwitchDemo4 from "../components/Switch.demo4.vue";
+import SwitchDemo1 from "../components/Switch/Switch.demo1.vue";
+import SwitchDemo2 from "../components/Switch/Switch.demo2.vue";
+import SwitchDemo3 from "../components/Switch/Switch.demo3.vue";
+import SwitchDemo4 from "../components/Switch/Switch.demo4.vue";
 export default {
   components: {
     Demo
