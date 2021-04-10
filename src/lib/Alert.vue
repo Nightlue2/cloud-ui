@@ -1,9 +1,14 @@
 <template>
     <div class="cloud-alert-container">
+        <div class="cloud-alert-icon-container" :class="{['cloud-alert-icon-container-small']:!title}" v-if="showIcon">
+            <svg class="cloud-alert-icon" :class="{[`cloud-alert-icon-${theme}`]:showIcon && theme}">
+                <use v-bind:xlink:href="'#icon-'+theme"></use>
+            </svg>
+        </div>
         <div class="cloud-alert-content" :class="{[`cloud-alert-theme-${theme}`]:theme}">
             <div :class="{'cloud-alert-title':title}">{{title}}</div>
             {{descriptions}}
-            <div class="cloud-alert-slot"><slot/></div>
+            <slot/>
         </div>
     </div>
 </template>
@@ -14,12 +19,13 @@ export default {
         theme:String,
         descriptions:String,
         title:String,
+        showIcon:Boolean
     },
     
 }
 </script>
 <style lang="scss">
-$border-rad:2px;
+$border-rad:4px;
 $success-color:#e1fccb;
 $success-border:#7bf21a;
 $info-color:#d2f9fb;
@@ -30,11 +36,13 @@ $error-color:#fff2f0;
 $error-border:#ffa092;
 .cloud-alert{
     &-container{
-        border-radius:$border-rad;
         margin-bottom:7px;
+        overflow: hidden;
+        position:relative;
     }
     &-content{
-        padding:14px 15px;
+        border-radius:$border-rad;
+        padding:12px 15px;
         font-size: 14px;
         white-space: wrap;
         overflow-wrap:break-word;
@@ -61,8 +69,46 @@ $error-border:#ffa092;
         font-size:16px;
         margin-bottom:10px;
     }
-    &-slot{
-        display: block;
+    &-icon{
+        width:1em;
+        height:1em;
+        font-size: 1em;
+        overflow: hidden;
+        &-success{
+            fill:$success-border;
+        }
+        &-info{
+            fill:$info-border;
+        }
+        &-warning{
+            fill:$warning-border;
+        }
+        &-error{
+            fill:$error-border;
+        }
     }
 }
+.cloud-alert-icon-container{
+    position:absolute;
+    left: 0;
+    top:50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:16px;
+    font-size:28px;
+    &+.cloud-alert-content{
+        padding-left:60px;
+    }
+    &-small{
+        font-size:20px;
+        margin-left:12px;
+        &+.cloud-alert-content{
+            padding-left:40px;
+        }
+    }
+}
+
+
 </style>
