@@ -1,10 +1,18 @@
 <template>
     <div id="demosPage">
-        <h1>Dialog 对话框</h1>
+      <section>
+        <h1>Dialog 对话框</h1>  
+      </section>
+      <section>
+        <h2>代码示例</h2>
+      </section>
+      <section>
         <Demo :component="DialogDemo1" />
         <Demo :component="DialogDemo2" />
         <Demo :component="DialogDemo3" />
         <Demo :component="DialogDemo4" />
+      </section>
+        
     </div>
 
 </template>

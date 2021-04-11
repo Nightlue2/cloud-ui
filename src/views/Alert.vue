@@ -1,9 +1,17 @@
 <template>
 <div id="demosPage">
-    <h1>Alert 警告提示</h1>
-    <Demo :component="AlertDemo1"/>   
-    <Demo :component="AlertDemo2"/>   
-    <Demo :component="AlertDemo3"/>
+    <section>
+        <h1>Alert 警告提示</h1>
+    </section>
+    <section>
+        <h2>代码示例</h2>
+    </section>
+    <section>
+        <Demo :component="AlertDemo1"/>   
+        <Demo :component="AlertDemo2"/>   
+        <Demo :component="AlertDemo3"/>
+    </section>
+    
 </div>
 </template>
 <script lang="ts">

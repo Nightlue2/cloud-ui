@@ -1,11 +1,20 @@
 <template>
 <div id="demosPage">
-  <h1>Button 按钮</h1>
-  <Demo :component="BtnDemo1" />
-  <Demo :component="BtnDemo2" />
-  <Demo :component="BtnDemo3" />
-  <Demo :component="BtnDemo4" />
-  <Demo :component="BtnDemo5" />
+  <section>
+    <h1>Button 按钮</h1>  
+
+  </section>
+  <section>
+    <h2>代码示例</h2>
+  </section>
+  <section>
+    <Demo :component="BtnDemo1" />
+    <Demo :component="BtnDemo2" />
+    <Demo :component="BtnDemo3" />
+    <Demo :component="BtnDemo4" />
+    <Demo :component="BtnDemo5" />
+  </section>
+  
 </div>
 </template>
 

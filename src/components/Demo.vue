@@ -68,12 +68,15 @@ $border-color: #d9d9d9;
 
 .demo {
   border: 1px solid $border-color;
-  margin: 16px 0 32px;
+  margin: 16px 0 60px;
   border-radius: 2px;
+  transition: box-shadow .28s ease;
+  &:hover{
+    box-shadow:0 2px 8px 1px rgb(0,0,0,8%),0 3px 16px 8px rgba(242,252,255,0.18) ;
+  }
   @media (min-width:1200px){
     min-width:875px;
     max-width:1200px;
-
   }
   >h2 {
     font-size: 20px;

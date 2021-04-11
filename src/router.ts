@@ -9,6 +9,7 @@ import Dialog from './views/Dialog.vue';
 import Switch from './views/Switch.vue';
 import Tabs from './views/Tabs.vue';
 import Alert from './views/Alert.vue';
+import TimePicker from './views/TimePicker.vue';
 const md = filename => h(Markdown, { path: `../markdown/${filename}.md`, key: filename })
 export const router = createRouter({
     history:createWebHashHistory(),
@@ -25,6 +26,7 @@ export const router = createRouter({
           {path:'switch',component:Switch},
           {path:'tabs',component:Tabs},
           {path:'alert',component:Alert},
+          {path:'timepicker',component:TimePicker},
         ]
       },
       {path:'/:pathMatch(.*)*',component:NotFound}

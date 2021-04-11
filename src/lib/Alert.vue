@@ -10,6 +10,9 @@
             {{descriptions}}
             <slot/>
         </div>
+        <span>
+            <article></article>
+        </span>
     </div>
 </template>
 

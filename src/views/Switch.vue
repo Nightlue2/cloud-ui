@@ -1,10 +1,17 @@
 <template>
 <div id="demosPage">
-  <h1>Switch 开关</h1>
-  <Demo :component="SwitchDemo1" />
-  <Demo :component="SwitchDemo2" />
-  <Demo :component="SwitchDemo3" />
-  <Demo :component="SwitchDemo4" />
+  <section>
+    <h1>Switch 开关</h1>
+  </section>
+  <section>
+    <h2>代码示例</h2>
+  </section>
+  <section>
+    <Demo :component="SwitchDemo1" />
+    <Demo :component="SwitchDemo2" />
+    <Demo :component="SwitchDemo3" />
+    <Demo :component="SwitchDemo4" />
+  </section>
 </div>
 </template>
 

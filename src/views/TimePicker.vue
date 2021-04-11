@@ -1,35 +1,28 @@
 <template>
 <div id="demosPage">
   <section>
-    <h1>Tabs 标签页</h1>
+    <h1>TimePicker 时间选择器</h1>
   </section>
   <section>
     <h2>代码示例</h2>
   </section>
   <section>
-    <Demo :component="TabDemo1" />
-    <Demo :component="TabDemo2" />
-    <Demo :component="TabDemo3" />
+    <Demo :component="TimeDemo1" />
   </section>
 </div>
-
 </template>
 
 <script lang="ts">
 import Demo from '../components/Demo.vue'
-import TabDemo1 from '../components/Tab/Tab.demo1.vue'
-import TabDemo2 from '../components/Tab/Tab.demo2.vue'
-import TabDemo3 from '../components/Tab/Tab.demo3.vue'
+import TimeDemo1 from '../components/TimePicker/Time.demo1.vue'
 
 export default {
   components: {
-    Demo
+    Demo,
   },
   setup() {
     return {
-      TabDemo1,
-      TabDemo2,
-      TabDemo3
+      TimeDemo1,
     }
   }
 }

@@ -7,7 +7,6 @@
   <Tab title="导航2">内容2</Tab>
   <Tab title="导航3">内容3</Tab>
   <Tab title="导航4">内容4</Tab>
-
 </Tabs>
 </template>
 

@@ -6,6 +6,7 @@
     <Alert theme="info" showIcon>普通提示</Alert>
     <Alert theme="warning" showIcon>警告提示</Alert>
     <Alert theme="error" showIcon>错误提示</Alert>
+    
     <Alert theme="success" title="成功提示" descriptions="成功状态下的文字说明...." showIcon/>
     <Alert theme="info" title="普通提示" descriptions="普通状态下的文字说明...." showIcon/>
     <Alert theme="warning" title="警告提示" descriptions="警告状态下的文字说明...." showIcon/>

@@ -25,8 +25,8 @@
                     </li>
                     <li>
                         <router-link to="/doc/switch">
-                        <span>Switch</span>
-                        <span class="chinese">开关</span>
+                            <span>Switch</span>
+                            <span class="chinese">开关</span>
                         </router-link>
                     </li>
                     <li>
@@ -42,9 +42,15 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link to="/doc/Alert">
+                        <router-link to="/doc/alert">
                         <span>Alert</span>
                         <span class="chinese">警告提示</span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/doc/timepicker">
+                        <span>TimePicker</span>
+                        <span class="chinese">时间选择器</span>
                         </router-link>
                     </li>
                 </ol>
@@ -84,6 +90,20 @@ export default {
 </script>
 <style lang="scss">
 @import '../style.scss';
+.markdown-body h1,.markdown-body h2{
+    border-bottom:none !important;
+}
+aside{
+    li:focus,a:focus{
+        outline: none;
+    }
+    a{
+        transition:color .23s ease;
+    }
+    a:hover{
+        color:$doc-router-color;
+    }
+}
 @media (min-width:1200px){
     .page{
         position: relative;
@@ -94,7 +114,9 @@ export default {
             width:100vw;
             display:flex;
             article{
-                width: 850px;
+                min-width: 850px;
+                max-width:1200px;
+                width: 1200px;
             }
             > aside{
                 width:$doc-aside-w;
@@ -143,7 +165,7 @@ export default {
                         span.chinese{
                             font-size: 14px;
                             margin-left:10px;
-                            opacity: .67;
+                            opacity: .77;
                             font-weight: 400;
                         }
                         .router-link-active {
@@ -244,7 +266,7 @@ export default {
                         span.chinese{
                             font-size: 14px;
                             margin-left:10px;
-                            opacity: .67;
+                            opacity: .77;
                             font-weight: 400;
                         }
                         .router-link-active {
@@ -331,7 +353,7 @@ export default {
                         span.chinese{
                             font-size: 14px;
                             margin-left:10px;
-                            opacity: .67;
+                            opacity: .77;
                             font-weight: 400;
                         }
                         .router-link-active {
