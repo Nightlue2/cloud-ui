@@ -1,6 +1,7 @@
 <template>
     <div style="position:relative;">
         <input class="cloud-timepicker-input" ref="input" placeholder="请输入时间" :value="v" autocomplete="off"/>
+        <Icon class="cloud-alert-icon" :class="{[`cloud-alert-icon-${theme}`]:showIcon && theme}" icon="theme" />
         <transition name="display">
             <div class="cloud-picker-wrapper" v-show="openOrNot" ref="picker">
                 <ul>
@@ -23,11 +24,15 @@
 </template>
 <script lang="ts">
 import { ref,onMounted} from 'vue';
+import Icon from '../components/Icon.vue';
 export default {
     props: {
         onChange:Function,
-  },
-  setup(props,context) {
+    },
+    components:{
+        Icon,
+    },
+  setup() {
       const input = ref< HTMLInputElement >(null);
       const button = ref <HTMLButtonElement> (null);
       const picker = ref <HTMLButtonElement> (null);
@@ -108,6 +113,8 @@ export default {
       }
   }
 }
+//tip:不保留ul滚动状态
+//    子组件悬浮不会触发父组件
 </script>
 
 <style lang="scss">

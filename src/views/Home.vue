@@ -6,9 +6,7 @@
           <h2>一个简洁的 UI 框架</h2>
           <p class="asButton">
             <a class="actions" href="https://github.com/Nightlue2" style="display:flex;align-items:center;">
-              <svg class="icon" style="width:28px;height:28px;margin-left:3px;margin-right:10px;">
-                <use xlink:href="#icon-github"></use>
-              </svg>
+              <Icon class="icon" style="width:28px;height:28px;margin-left:3px;margin-right:10px;" icon="github" />
               Github
             </a>
             <router-link class="actions" to="/doc" >开始</router-link>
@@ -19,27 +17,21 @@
       <ul>
         <li>
           <div class="grid-container">
-            <svg class="icon">
-              <use xlink:href="#icon-vue"></use>
-            </svg>
+            <Icon class="icon" icon="vue" />
             <h3>基于 Vue 3</h3>
             <p>使用了 Vue 3 Composition API</p>
           </div>
         </li>
         <li>
           <div class="grid-container">
-            <svg class="icon">
-              <use xlink:href="#icon-typescript"></use>
-            </svg>
+            <Icon class="icon" icon="typescript" />
             <h3>基于 TypeScript </h3>
             <p>源代码采用 TypeScript 书写</p>
           </div>
         </li>
         <li>
           <div class="grid-container">
-            <svg class="icon">
-              <use xlink:href="#icon-light"></use>
-            </svg>
+            <Icon class="icon" icon="light"/>
             <h3>代码易读</h3>
             <p>每个组件的源代码都极其简洁</p>
           </div>
@@ -49,9 +41,10 @@
 </template>
 <script lang="ts">
 import TopNav from '../components/TopNav.vue';
+import Icon from '../components/Icon.vue';
 import {computed,ref} from 'vue';
 export default {
-    components: {TopNav},
+    components: {TopNav,Icon},
     setup(){
       let documentWidth = ref(document.documentElement.clientWidth);
       let jumpOrNot = computed(()=>{

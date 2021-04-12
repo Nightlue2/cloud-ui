@@ -1,9 +1,7 @@
 <template>
     <div class="cloud-alert-container">
         <div class="cloud-alert-icon-container" :class="{['cloud-alert-icon-container-small']:!title}" v-if="showIcon">
-            <svg class="cloud-alert-icon" :class="{[`cloud-alert-icon-${theme}`]:showIcon && theme}">
-                <use v-bind:xlink:href="'#icon-'+theme"></use>
-            </svg>
+            <Icon :icon="theme" class="cloud-alert-icon" :class="{[`cloud-alert-icon-${theme}`]:showIcon && theme}"/>
         </div>
         <div class="cloud-alert-content" :class="{[`cloud-alert-theme-${theme}`]:theme}">
             <div :class="{'cloud-alert-title':title}">{{title}}</div>
@@ -17,6 +15,7 @@
 </template>
 
 <script lang="ts">
+import Icon from '../components/Icon.vue';
 export default {
     props:{
         theme:String,
@@ -24,7 +23,9 @@ export default {
         title:String,
         showIcon:Boolean
     },
-    
+    components:{
+        Icon
+    }
 }
 </script>
 <style lang="scss">

@@ -7,9 +7,7 @@
                     <header>
                         <slot name="title" />
                         <div @click="close" class="cloud-dialog-close">
-                          <svg class="icon">
-                            <use xlink:href="#icon-dialog-close"></use>
-                          </svg>
+                          <Icon class="icon" icon="dialog-close"/>
                         </div>
                     </header>
                     <main>
@@ -27,6 +25,7 @@
 
 <script lang="ts">
 import Button from "./Button.vue";
+import Icon from "../components/Icon.vue";
 export default {
   props: {
     visible: {
@@ -44,6 +43,7 @@ export default {
   },
   components: {
     Button,
+    Icon
   },
   setup(props, context) {
     const w = parseInt(props.width);

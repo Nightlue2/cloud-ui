@@ -1,23 +1,18 @@
 <template>
   <div class="topnav" :class="outerClass">
-    <svg class="icon list" @click="toggleMenu">
-      <use xlink:href="#icon-list"></use>
-    </svg>
+    <Icon icon="list" class="icon list" @click="toggleMenu" />
     <router-link to="/" v-if="jumpOrNot">
-      <svg class="icon">
-        <use xlink:href="#icon-cloud"></use>
-      </svg>
+      <Icon icon="cloud" class="icon" />
     </router-link>
     <div v-else>
-      <svg class="icon">
-        <use xlink:href="#icon-cloud"></use>
-      </svg>
+      <Icon class="icon" icon="cloud" />
     </div>
     <router-link to="/doc" class="toDoc">文档</router-link>
   </div>
 </template>
 
 <script lang="ts">
+import Icon from './Icon.vue';
 export default {
   props: {
     jumpOrNot: {
@@ -29,6 +24,9 @@ export default {
     modelValue: {
       type: Boolean,
     },
+  },
+  components:{
+    Icon,
   },
   setup() {
     const toggleMenu = function () {

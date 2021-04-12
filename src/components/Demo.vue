@@ -7,14 +7,9 @@
     <div class="demo-description-title">{{descriptions[0]}}</div>
     <p class="demo-description-content" v-html="descriptions[1]"></p>
     <button class="demo-showcode" @click="toggleCode">
-      <svg class="icon demo-svg-code" :class="{'demo-svg-show':!codeVisible,'demo-svg-hide':codeVisible}">
-        <use xlink:href="#icon-code-close"></use>
-      </svg>
-      <svg class="icon demo-svg-code" :class="{'demo-svg-show':codeVisible,'demo-svg-hide':!codeVisible}">
-        <use xlink:href="#icon-code-open"></use>
-      </svg>
+      <Icon class="icon demo-svg-code" :class="{'demo-svg-show':!codeVisible,'demo-svg-hide':codeVisible}" icon="code-close"/>
+      <Icon class="icon demo-svg-code" :class="{'demo-svg-show':codeVisible,'demo-svg-hide':!codeVisible}" icon="code-open"/>
     </button>
-    
   </div>
   <div class="demo-code" v-if="codeVisible">
     <pre class="language-html" v-html="html" />
@@ -23,7 +18,8 @@
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue'
+import Button from '../lib/Button.vue';
+import Icon from './Icon.vue'
 import 'prismjs';
 import 'prismjs/themes/prism.css';
 import {
@@ -33,7 +29,8 @@ import {
 const Prism = (window as any).Prism
 export default {
   components: {
-    Button
+    Button,
+    Icon
   },
   props: {
     component: Object
