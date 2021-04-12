@@ -2,7 +2,6 @@
 <div id="demosPage">
   <section>
     <h1>Button 按钮</h1>  
-
   </section>
   <section>
     <h2>代码示例</h2>
@@ -14,7 +13,6 @@
     <Demo :component="BtnDemo4" />
     <Demo :component="BtnDemo5" />
   </section>
-  
 </div>
 </template>
 
@@ -43,16 +41,21 @@ export default {
 <style lang="scss">
 @import '../example.scss';
 .btnDemoContainer{
-  margin:15px auto;
+  margin:8px auto;
   line-height:1em;
   @media (max-width:770px) {
-    line-height:inherit;
+    line-height:45px;
   }
   &:first-child{
     margin-top:0;
   }
   &:last-child{
     margin-bottom: 0;
+  }
+}
+.cloud-button-demo{
+  @media(max-width:770px){
+    line-height: 43px;
   }
 }
 </style>

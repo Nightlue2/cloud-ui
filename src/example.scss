@@ -12,9 +12,15 @@ $theme-color: #b3e3ee;
     font-weight: normal;
   }
   @media (max-width: 770px) {
+    padding: 10px 3.5vw 20px;
     h1 {
-      font-size: 24px;
+      font-size: 26px;
       margin: 0;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: normal;
     }
   }
 }

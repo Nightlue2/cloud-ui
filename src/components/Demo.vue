@@ -75,6 +75,9 @@ $border-color: #d9d9d9;
     min-width:875px;
     max-width:1200px;
   }
+  @media (max-width:770px){
+    margin-bottom:22px;
+  }
   >h2 {
     font-size: 20px;
     padding: 8px 16px;
@@ -84,6 +87,9 @@ $border-color: #d9d9d9;
   &-component {
     padding: 40px 24px 50px 30px;
     line-height: 1em;
+    @media (max-width:770px){
+      padding:30px 20px;
+    }
   }
 
   &-actions {
@@ -100,11 +106,17 @@ $border-color: #d9d9d9;
     line-height:1em;
     background-color: white;
     padding:0 4px;
+    @media (max-width:770px){
+      left:23px;
+    }
   }
   &-description-content{
     font-size:14px;
     line-height: 1.5em;
     padding:24px 34px;
+    @media (max-width:770px){
+      padding:18px 25px 12px 17px;
+    }
   }
 
   &-showcode{

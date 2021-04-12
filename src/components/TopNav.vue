@@ -28,11 +28,11 @@ export default {
   components:{
     Icon,
   },
-  setup() {
+  setup(props,context) {
     const toggleMenu = function () {
-      this.$emit("update:modelValue", !this.modelValue);
+        context.emit("update:modelValue", !props.modelValue);
     };
-    return { toggleMenu };
+    return {toggleMenu}
   },
 };
 </script>
@@ -56,6 +56,11 @@ export default {
   justify-content: space-between;
   > .icon {
     display: none;
+  }
+  > .list{
+    width:24px;
+    height:24px;
+    margin:auto 0;
   }
   > .logo {
     max-width: 6em;

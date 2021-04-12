@@ -94,6 +94,7 @@ export default {
     border-bottom:none !important;
 }
 aside{
+    background-color:white;
     li:focus,a:focus{
         outline: none;
     }
@@ -316,6 +317,7 @@ aside{
                 background-color: white;
                 font-family: -apple-system,"Noto Sans","Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,"Liberation Sans","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Source Han Sans SC","Source Han Sans CN","Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Zen Hei","ST Heiti",SimHei,"WenQuanYi Zen Hei Sharp",sans-serif;
                 background-color:white;
+                z-index:5;
                 &::after{
                     position: absolute;
                     content:'';
@@ -377,6 +379,7 @@ aside{
                     h1{
                         font-size:20px;
                         margin:0;
+                        margin-bottom: 20px;
                     }
                 }
             }
