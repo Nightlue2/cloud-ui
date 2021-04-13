@@ -11,19 +11,13 @@
 </template>
 
 <script lang="ts">
+import Tab from './Tab.vue';
 import {
   computed,
   ref,
   watchEffect,
   onMounted
 } from 'vue';
-export const Tab = {
-        template:`
-            <div>
-                <slot />
-            </div>
-        `,
-}
 export default {
   props: {
     selected: {

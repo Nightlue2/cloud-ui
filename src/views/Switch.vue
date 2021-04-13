@@ -2,6 +2,7 @@
 <div id="demosPage">
   <section>
     <h1>Switch 开关</h1>
+    <p>用来在两种状态中切换。</p>
   </section>
   <section>
     <h2>代码示例</h2>

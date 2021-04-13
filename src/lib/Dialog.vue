@@ -62,11 +62,11 @@ export default {
       }
     }
     const confirm = () => {
-      props.confirm?.()
+      props.confirm && props.confirm()
       close()
     }
     const cancel = () => {
-      props.cancel?.()
+      props.cancel && props.confirm()
       close()
     }
     return {

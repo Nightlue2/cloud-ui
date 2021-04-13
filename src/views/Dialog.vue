@@ -2,6 +2,7 @@
     <div id="demosPage">
       <section>
         <h1>Dialog 对话框</h1>  
+        <p>一个用于提示的可交付的对话框。</p>
       </section>
       <section>
         <h2>代码示例</h2>

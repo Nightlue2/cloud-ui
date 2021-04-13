@@ -54,9 +54,6 @@ export default {
       p
     }
   },
-  mounted(){
-    // console.log(this.p);
-  }
 }
 </script>
 

@@ -20,10 +20,5 @@ export default {
       checked
     }
   },
-  methods:{
-    fn(e){
-      console.log(e);
-    }
-  }
 }
 </script>

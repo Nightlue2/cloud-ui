@@ -13,13 +13,5 @@ export default {
   components: {
     TimePicker
   },
-  setup(){
-      const onchange = function(time:string){
-          console.log(time);
-      }
-      return {
-          onchange
-      }
-  }
 }
 </script>

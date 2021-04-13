@@ -245,7 +245,7 @@ aside{
                 h2{
                     font-weight: 400;
                     font-size:1em;
-                    padding-left:40px;
+                    padding-left:25px;
                     padding-top:20px;
                 }
 
@@ -257,7 +257,7 @@ aside{
                         a{
                             display: block;
                             padding:10px 0;
-                            padding-left:50px;
+                            padding-left:30px;
                             font-size: inherit;
                         }
                         span{

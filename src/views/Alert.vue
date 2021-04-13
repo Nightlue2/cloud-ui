@@ -2,6 +2,7 @@
 <div id="demosPage">
     <section>
         <h1>Alert 警告提示</h1>
+        <p>警告提示，用于向用户展示需要关注的内容。</p>
     </section>
     <section>
         <h2>代码示例</h2>

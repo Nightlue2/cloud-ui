@@ -5,7 +5,7 @@
 然后在你的代码中写入下面的代码
 
 ```
-import {Button, Tabs, Switch, Dialog} from "cloud-ui"
+import {Button, Tabs, Switch, Dialog, Alert, TimePicker} from "cloud-ui"
 ```
 
 就可以使用我提供的组件了。
@@ -21,7 +21,7 @@ import {Button, Tabs, Switch, Dialog} from "cloud-ui"
   </div>
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "cloud-ui"
+import {Button, Tabs, Switch, Dialog, Alert, TimePicker} from "cloud-ui"
 export default {
   components: {Button}
 }

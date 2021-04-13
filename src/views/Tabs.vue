@@ -2,6 +2,7 @@
 <div id="demosPage">
   <section>
     <h1>Tabs 标签页</h1>
+    <p>点击不同的tab可切换到不同的页。</p>
   </section>
   <section>
     <h2>代码示例</h2>

@@ -1,7 +1,8 @@
 <template>
 <div id="demosPage">
   <section>
-    <h1>Button 按钮</h1>  
+    <h1>Button 按钮</h1> 
+    <p>用于触发一系列的操作。</p> 
   </section>
   <section>
     <h2>代码示例</h2>

@@ -11,7 +11,8 @@
 </template>
 
 <script lang="ts">
-import Tabs,{Tab} from '../../lib/Tabs.vue';
+import Tab from '../../lib/Tab.vue';
+import Tabs from '../../lib/Tabs.vue';
 import {
   ref,
 } from 'vue'

@@ -10,7 +10,10 @@ import Switch from './views/Switch.vue';
 import Tabs from './views/Tabs.vue';
 import Alert from './views/Alert.vue';
 import TimePicker from './views/TimePicker.vue';
-const md = filename => h(Markdown, { path: `../markdown/${filename}.md`, key: filename })
+import intro from './markdown/intro.md';
+import install from './markdown/install.md';
+import getstarted from './markdown/getstarted.md';
+const md = string => h(Markdown, { content: string, key: string })
 export const router = createRouter({
     history:createWebHashHistory(),
     routes: [
@@ -18,9 +21,9 @@ export const router = createRouter({
       {path:'/doc',component:Doc,
         children:[
           {path:'',redirect:'/doc/Intro'},
-          {path:'intro',component:md('intro')},
-          {path:'install',component:md('install')},
-          {path:'getStarted',component:md('getstarted')},
+          {path:'intro',component:md(intro)},
+          {path:'install',component:md(install)},
+          {path:'getStarted',component:md(getstarted)},
           {path:'button',component:Button},
           {path:'dialog',component:Dialog},
           {path:'switch',component:Switch},

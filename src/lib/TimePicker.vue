@@ -1,21 +1,22 @@
 <template>
-    <div style="position:relative;">
-        <input class="cloud-timepicker-input" ref="input" placeholder="请输入时间" :value="v" autocomplete="off"/>
-        <Icon class="cloud-alert-icon" :class="{[`cloud-alert-icon-${theme}`]:showIcon && theme}" icon="theme" />
+    <div class="cloud-picker" :class="{['cloud-picker-large']:size==='large'}" ref="picker">
+        <input class="cloud-picker-input" :class="{['cloud-picker-input-small']:size==='small'}" size="13" ref="input" placeholder="请输入时间" :value="v" autocomplete="off" />
+        <Icon class="cloud-picker-icon" icon="clock"/>
+        <Icon class="cloud-picker-icon" :class="{['cloud-picker-showicon']:v}" icon="timepicker-close" @click="v = ''" v-if="v"/>
         <transition name="display">
-            <div class="cloud-picker-wrapper" v-show="openOrNot" ref="picker">
+            <div class="cloud-picker-wrapper" v-show="openOrNot" ref="pickList" :style="{top}">
                 <ul>
-                    <li v-for="(item,index) in arrGenertor(24)" :key="index" @click="changeV(item,0)">{{item}}</li>
+                    <li v-for="(item,index) in arrGenertor(24)" :key="index" @click="changeVal(item,0)">{{item}}</li>
                 </ul>
                 <ul>
-                    <li v-for="(item,index) in arrGenertor(60)" :key="index" @click="changeV(item,1)">{{item}}</li>
+                    <li v-for="(item,index) in arrGenertor(60)" :key="index" @click="changeVal(item,1)">{{item}}</li>
                 </ul>
                 <ul>
-                    <li v-for="(item,index) in arrGenertor(60)" :key="index" @click="changeV(item,2)">{{item}}</li>
+                    <li v-for="(item,index) in arrGenertor(60)" :key="index" @click="changeVal(item,2)">{{item}}</li>
                 </ul>
                 <div class="cloud-picker-footer">
                     <a href="javascript:;" class="cloud-picker-getmoment" @click="v=currentTime()">此刻</a>
-                    <button class="cloud-picker-submit" ref="button">确定</button>
+                    <button class="cloud-picker-submit" ref="button" @click="submitVal">确 定</button>
                 </div>
             </div>
         </transition> 
@@ -27,17 +28,22 @@ import { ref,onMounted} from 'vue';
 import Icon from '../components/Icon.vue';
 export default {
     props: {
-        onChange:Function,
+        onchange:Function,
+        size:String,
     },
     components:{
         Icon,
     },
-  setup() {
+  setup(props) {
       const input = ref< HTMLInputElement >(null);
-      const button = ref <HTMLButtonElement> (null);
-      const picker = ref <HTMLButtonElement> (null);
-      let v = ref("");
-      let openOrNot = ref(false);
+      const button = ref< HTMLButtonElement > (null);
+      const pickList = ref< HTMLButtonElement > (null);
+      const clock = ref< SVGSVGElement > (null);
+      const picker = ref< HTMLDivElement >(null);
+      const v = ref("");//控制input的值
+      const openOrNot = ref(false);//控制显示下拉框
+      const left = ref('');
+      const top = ref('');
       const arrGenertor = function(upLimit){//生成li里的数据
           const init = 0;
           const arr = Array(upLimit);
@@ -64,7 +70,7 @@ export default {
           }
           return false;
       }
-      const changeV = function(new_v,place){
+      const changeVal = function(new_v,place){
           if(isValid() === true){
               let v_arr = v.value.split(':')
               v_arr[place] = new_v
@@ -80,6 +86,9 @@ export default {
               v.value = v_arr.join(':')
           }
       }
+      const submitVal = function(){
+          props.onchange.call(null,v);
+      }
       onMounted(()=>{
         document.body.addEventListener('click',(e)=>{
             if(e.target === input.value){
@@ -93,12 +102,20 @@ export default {
                 }
             }
         })
-        picker.value.addEventListener('click',(e)=>{
+        pickList.value.addEventListener('click',(e)=>{
             e.stopPropagation();
             if(e.target === button.value){
+                if(v.value === '')  v.value = '00:00:00';
                 openOrNot.value = false;
             }
         })
+        input.value.addEventListener('focus',()=>{
+            picker.value.classList.add('cloud-picker-focused')
+        })
+        input.value.addEventListener('blur',()=>{
+            picker.value.classList.remove('cloud-picker-focused')
+        })
+        top.value = picker.value.getBoundingClientRect().height+'px';
       })
       return {
           v,
@@ -106,41 +123,64 @@ export default {
           arrGenertor,
           currentTime,
           isValid,
-          changeV,
+          changeVal,
           input,
           button,
+          pickList,
+          clock,
           picker,
+          left,
+          top,
+          submitVal,
       }
   }
 }
-//tip:不保留ul滚动状态
-//    子组件悬浮不会触发父组件
 </script>
 
 <style lang="scss">
-$theme-color: #5ec5db;
-.cloud-timepicker-input{
-    width:170px;
+$theme-color: #44c0db;
+.cloud-picker{
+    position:relative;
+    // padding:7px 6px 7px 10px;
+    padding:0 5px;
+    border-radius: 2px;
+    border:1px solid #d9d9d9;
+    display: inline-flex;
+    &:hover{
+        border-color:$theme-color;
+    }
+    &-focused{
+        border-color:$theme-color;
+        outline:0;
+        box-shadow:0 0 0 2px rgba(94,197,219,0.23);
+    }
+}
+.cloud-picker-large{
+    padding:8px 10px;
+    padding-left: 5px;
+}
+.cloud-picker-input{
+    width:100%;
     border:none;
     background: white;
     transition:box-shadow .25s linear,border .3s ease;
     font-size: 14px;
-    padding:7px 6px 7px 10px;
-    border:1px solid #d9d9d9;
-    &:hover{
-        border-color:$theme-color;
-    }
+    line-height:24px;
+    text-overflow: ellipsis;
+    padding:2px 0;
     &:focus{
-        border-color:$theme-color;
-        box-shadow:0 0 0 2px rgba(94,197,219,0.23);
         outline:none;
+    }
+    &-small{
+        line-height:16px;
     }
 }
 .cloud-picker-wrapper{
     position:absolute;
-    z-index:10;
-    width:180px;
+    left:0;
     margin-top:3px;
+    z-index:4;
+    width:180px;
     border-radius: 3px;
     box-shadow:0 0 10px 4px rgba(0, 0, 0, 4%),0 2px 15px 3px rgba(0,0,0,5%);
     background-color: white;
@@ -181,26 +221,27 @@ $theme-color: #5ec5db;
     line-height:50px;
     background-color:white;
     border-top:1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
     > .cloud-picker-getmoment{
+        font-size: inherit;
         color:$theme-color;
         transition:color .25s linear;
-        margin-left:10px;
+        margin-left:15px;
         &:hover{
             cursor:pointer;
             color:lighten($theme-color,8%);
         }
     }
     > .cloud-picker-submit{
+        font-size: inherit;
         background-color:#29a1ba;
         border:none;
-        width:56px;
-        height:30px;
+        width:46px;
+        height:26px;
         text-align: center;
-        padding:4px 3px;
         color:white;
-        letter-spacing: 2px;
         margin:auto 0;
-        margin-left:77px;
+        margin-left:80px;
         transition:background-color .25s linear;
         &:focus{
             outline:none;
@@ -211,9 +252,28 @@ $theme-color: #5ec5db;
         }
     }
 }
+.cloud-picker-icon{
+    width:16px;
+    height:16px;
+    color:rgba(0,0,0,.45);
+    fill:currentColor;
+    margin:auto 0;
+    position:absolute;
+    right:3.7%;
+    top:50%;
+    transform:translateY(-50%);
+    transition: opacity .25s linear;
+}
+.cloud-picker-showicon{
+    background: white;
+    &:hover{
+        cursor: pointer;
+        color:rgba(0,0,0,.75);
+    }
+}
 .display-enter-active,
 .display-leave-active{
-    transition:opacity 0.4s ease;
+    transition:opacity .4s ease;
 }
 .display-enter-from,
 .display-leave-to{
