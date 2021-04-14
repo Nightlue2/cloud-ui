@@ -141,7 +141,6 @@ export default {
 $theme-color: #44c0db;
 .cloud-picker{
     position:relative;
-    // padding:7px 6px 7px 10px;
     padding:0 5px;
     border-radius: 2px;
     border:1px solid #d9d9d9;
@@ -190,9 +189,13 @@ $theme-color: #44c0db;
     flex-wrap:wrap;
     overflow-y: hidden;
     ul{
+        list-style:none;
         width:60px;
         height: 238px;
         overflow-y:hidden;
+        padding:0;
+        margin:0;
+        box-sizing: border-box;
         padding-top:3px;
         border-right: 1px solid rgba(0, 0, 0, 0.1);
         &:hover{
@@ -203,6 +206,9 @@ $theme-color: #44c0db;
         border-right:none;
     }
     ul > li{
+        padding:0;
+        margin:0;
+        box-sizing: border-box;
         font-size:14px;
         line-height:26px;
         padding:4px 0 4px 10px;
@@ -227,6 +233,7 @@ $theme-color: #44c0db;
         color:$theme-color;
         transition:color .25s linear;
         margin-left:15px;
+        text-decoration: none;
         &:hover{
             cursor:pointer;
             color:lighten($theme-color,8%);

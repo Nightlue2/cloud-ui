@@ -8,9 +8,6 @@
             {{descriptions}}
             <slot/>
         </div>
-        <span>
-            <article></article>
-        </span>
     </div>
 </template>
 
@@ -113,6 +110,4 @@ $error-border:#ffa092;
         }
     }
 }
-
-
 </style>

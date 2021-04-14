@@ -7,7 +7,6 @@
 import './index.scss'
 export default {
   name: 'App',
-  
 }
 </script>
 <style lang="scss">

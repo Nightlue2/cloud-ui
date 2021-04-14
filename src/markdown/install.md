@@ -3,13 +3,13 @@
 打开终端运行下列命令：
 
 ```
-npm install cloud-ui
+npm install c4loud
 ```
 
 或者
 
 ```
-yarn add cloud-ui
+yarn add c4loud
 ```
 
 下一节：[开始使用](#/doc/getStarted)
