@@ -50,7 +50,7 @@ export default {
 
     const defaults = context.slots.default() //首先拿到传递的tab组件
     defaults.forEach((tab) => {
-      if (tab.type !== Tab) {
+      if (tab.type.name !== Tab.name) {
         throw new Error('Tabs 子标签必须是 Tab')//如果不是tab组件就报错
       }
     })
