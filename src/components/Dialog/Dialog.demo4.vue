@@ -27,7 +27,6 @@ export default {
     Dialog
   },
   setup() {
-    window.console.log('你好');
     const x = ref(false);
     const dialogWidth = '720px';
     const toggle = () => {

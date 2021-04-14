@@ -4,9 +4,8 @@ import fs from 'fs'
 import {baseParse} from '@vue/compiler-core'
 
 export default {
-  alias:{
-    'vue':'vue/dist/vue.esm-bundler.js'
-  },
+  base:'./',
+  assetsDir:'assets',
   plugins: [md()],
   vueCustomBlockTransforms: {
     demo: (options) => {

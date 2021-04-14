@@ -81,9 +81,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../example.scss';
 $radius: 2px;
 $border-color: #f0f0f0;
+$theme-color: #b3e3ee;
 
 .cloud-dialog {
   border:none;
